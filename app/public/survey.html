@@ -152,7 +152,7 @@
 		<br>
 
 		<!-- Submit Button -->
-		<button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#resultsModal" id="submit"><i class="fa fa-check-circle" aria-hidden="true"></i>
+		<button type="submit" class="btn btn-primary btn-lg btn-block" id="submit"><i class="fa fa-check-circle" aria-hidden="true"></i>
  Submit</button>
 
 		<hr>
@@ -234,16 +234,16 @@
 	    	var currentURL = window.location.origin;
 
 	    	// AJAX post the data to the friends API. 
-	    	$.post("/api/friends", userData, function(req, res){
-	    		console.log('runnong')
+	    	$.post(currentURL + "/api/friends", userData, function(data){
+
 	    		// Grab the result from the AJAX post so that the best match's name and photo are displayed.
-	    		$("#matchName").text(res.name);
-	    		$('#matchImg').attr("src", res.photo);
+	    		$("#matchName").text(data.name);
+	    		$('#matchImg').attr("src", data.photo);
 
 		    	// Show the modal with the best match 
-				$("#resultsModal").modal('toggle');
+		    	$("#resultsModal").modal('toggle');
+
 	    	});
-	    	
 		}
 		else
 		{
