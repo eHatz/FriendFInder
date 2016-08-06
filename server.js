@@ -20,5 +20,5 @@ apiRoutes.getFriends(app);
 
 
 app.listen(PORT, function () {
-  console.log('listening on', PORT);
+	console.log('listening on', PORT);
 });
