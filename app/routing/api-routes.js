@@ -15,6 +15,7 @@ function getFriends(app) {
 function postFriends (app) {
 	app.post('/api/friends', function(req, res) {
 		var user = req.body;
+	//	console.log(user);
 		var scoreList = [];
 		var userScoreArr = user.scores;
 		for (var i = 0; i < friends.length; i++) {
@@ -26,18 +27,25 @@ function postFriends (app) {
 			};
 			scoreList.push(compatibility);
 		};
-		console.log(scoreList);
+	//	console.log(scoreList);
 		Array.min = function( array ){
 			return Math.min.apply( Math, array );
 		};
 		var minimum = Array.min(scoreList);
 		var minIndex = scoreList.indexOf(minimum);
-		var bestFriend = friends[minIndex].name;
-		console.log(bestFriend);
+		var bestFriendName = friends[minIndex].name;
+		var	bestFriendImg = friends[minIndex].photo;
+		console.log(bestFriendImg);
+	//	console.log(bestFriend);
 
 		friends.push(user);
+		// $("#matchName").text(bestFriendName);
+		// $('#matchImg').attr("src", bestFriendImg);
+		// $("#myModal").modal('toggle');
 	});
 };
+
+
 
 
 module.exports.getFriends = getFriends;
